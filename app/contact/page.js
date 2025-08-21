@@ -165,7 +165,11 @@ export default function ContactPage() {
                     </p>
                   </CardHeader>
                   <CardContent>
-                    <form className="space-y-6" onSubmit={handleSubmit}>
+                    <form
+                      method="POST"
+                      action="https://al-aqsa-backend.onrender.com/api/contact"
+                      className="space-y-6"
+                    >
                       <div className="grid md:grid-cols-2 gap-4">
                         <div>
                           <Label
