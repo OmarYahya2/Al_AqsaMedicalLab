@@ -16,11 +16,14 @@ export async function POST(request) {
   console.log("Contact form submission:", data);
 
   // إرسال البيانات إلى Django backend
-  const res = await fetch("https://al-aqsabackend-uokt.onrender.com", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(data),
-  });
+  const res = await fetch(
+    "https://al-aqsabackend-uokt.onrender.com/api/contact/",
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    }
+  );
 
   if (!res.ok) {
     console.error("Error sending data to backend:", await res.text());
