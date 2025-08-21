@@ -16,7 +16,7 @@ export async function POST(request) {
   console.log("Contact form submission:", data);
 
   // إرسال البيانات إلى Django backend
-  const res = await fetch("http://127.0.0.1:8000/api/contact/", {
+  const res = await fetch("https://al-aqsabackend-uokt.onrender.com", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
