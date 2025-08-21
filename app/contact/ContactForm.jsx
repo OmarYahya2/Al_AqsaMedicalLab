@@ -1,4 +1,3 @@
-// app/contact/ContactForm.jsx
 "use client";
 
 export default function ContactForm() {
@@ -23,21 +22,18 @@ export default function ContactForm() {
       }
     );
 
-    if (!res.ok) {
-      console.error("Error sending data:", await res.text());
-    } else {
-      alert("تم الاستلام! سنرد عليك في أقرب وقت ممكن");
-    }
+    if (!res.ok) console.error("Error sending data:", await res.text());
+    else alert("تم الاستلام! سنرد عليك في أقرب وقت ممكن");
   }
 
   return (
     <form onSubmit={handleSubmit}>
-      <input name="firstName" required placeholder="First Name" />
-      <input name="lastName" required placeholder="Last Name" />
-      <input name="email" type="email" required placeholder="Email" />
+      <input name="firstName" placeholder="First Name" />
+      <input name="lastName" placeholder="Last Name" />
+      <input name="email" type="email" placeholder="Email" />
       <input name="phone" placeholder="Phone" />
-      <input name="subject" required placeholder="Subject" />
-      <textarea name="message" required placeholder="Message" />
+      <input name="subject" placeholder="Subject" />
+      <textarea name="message" placeholder="Message" />
       <button type="submit">إرسال</button>
     </form>
   );
