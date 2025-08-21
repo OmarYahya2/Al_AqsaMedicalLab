@@ -1,9 +1,7 @@
-import { NextResponse } from "next/server";
+async function handleSubmit(e) {
+  e.preventDefault(); // يمنع إعادة تحميل الصفحة
 
-export async function POST(request) {
-  const formData = await request.formData();
-
-  // تحويل الحقول لتطابق الـ Django serializer
+  const formData = new FormData(e.target);
   const data = {
     first_name: formData.get("firstName"),
     last_name: formData.get("lastName"),
@@ -13,9 +11,6 @@ export async function POST(request) {
     message: formData.get("message"),
   };
 
-  console.log("Contact form submission:", data);
-
-  // إرسال البيانات إلى Django backend
   const res = await fetch(
     "https://al-aqsabackend-uokt.onrender.com/api/contact/",
     {
@@ -27,12 +22,7 @@ export async function POST(request) {
 
   if (!res.ok) {
     console.error("Error sending data to backend:", await res.text());
+  } else {
+    alert("تم الاستلام! سنرد عليك في أقرب وقت ممكن");
   }
-
-  return NextResponse.redirect(
-    new URL(
-      "/contact?message=تم الاستلام! سنرد عليك في أقرب وقت ممكن",
-      request.url
-    )
-  );
 }
