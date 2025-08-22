@@ -11,30 +11,55 @@ import { MessageSquare } from "lucide-react";
 export default function ContactForm() {
   async function handleSubmit(e) {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const data = {
-      first_name: formData.get("firstName"),
-      last_name: formData.get("lastName"),
-      email: formData.get("email"),
-      phone: formData.get("phone"),
-      subject: formData.get("subject"),
-      message: formData.get("message"),
-    };
+    
+    // إضافة حالة loading
+    const submitButton = e.target.querySelector('button[type="submit"]');
+    const originalText = submitButton.textContent;
+    submitButton.disabled = true;
+    submitButton.textContent = 'جاري الإرسال...';
+    
+    try {
+      const formData = new FormData(e.target);
+      const data = {
+        first_name: formData.get("firstName"),
+        last_name: formData.get("lastName"),
+        email: formData.get("email"),
+        phone: formData.get("phone") || "",
+        subject: formData.get("subject"),
+        message: formData.get("message"),
+      };
 
-    const res = await fetch(
-      "https://al-aqsabackend-uokt.onrender.com/api/contact/",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+      console.log("Sending data:", data); // للتنقيح
+
+      const res = await fetch(
+        "https://al-aqsabackend-uokt.onrender.com/api/contact/",
+        {
+          method: "POST",
+          headers: { 
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(data),
+        }
+      );
+
+      const responseData = await res.json();
+      console.log("Response:", responseData); // للتنقيح
+
+      if (res.ok && responseData.success) {
+        alert(responseData.message || "تم الاستلام! سنرد عليك في أقرب وقت ممكن");
+        e.target.reset(); // تفريغ الحقول بعد الإرسال
+      } else {
+        console.error("Error response:", responseData);
+        alert(responseData.message || "حدث خطأ أثناء إرسال الرسالة. يرجى المحاولة مرة أخرى.");
       }
-    );
-
-    if (!res.ok) {
-      console.error("Error sending data:", await res.text());
-    } else {
-      alert("تم الاستلام! سنرد عليك في أقرب وقت ممكن");
-      e.target.reset(); // تفريغ الحقول بعد الإرسال
+    } catch (error) {
+      console.error("Network error:", error);
+      alert("خطأ في الاتصال. يرجى التحقق من اتصال الإنترنت والمحاولة مرة أخرى.");
+    } finally {
+      // إعادة تفعيل الزر
+      submitButton.disabled = false;
+      submitButton.textContent = originalText;
     }
   }
 
