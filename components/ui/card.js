@@ -4,7 +4,7 @@ import { cn } from "../../lib/utils";
 
 export function Card({ children, className = "", ...props }) {
   return (
-    <div className={`rounded-lg border bg-white p-4 ${className}`} {...props}>
+    <div className={`rounded-lg border bg-card text-card-foreground p-4 ${className}`} {...props}>
       {children}
     </div>
   );
