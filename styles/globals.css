@@ -1,79 +1,80 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components; 
+@tailwind utilities;
 
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* ألوان زرقاء جميلة ومتدرجة */
-  --background: oklch(0.995 0.02 220); /* خلفية بيضاء مع لمسة زرقاء ناعمة */
-  --foreground: oklch(0.15 0.03 235); /* نص أزرق داكن */
-  --card: oklch(0.98 0.015 215); /* كروت بيضاء مع لمسة زرقاء */
-  --card-foreground: oklch(0.18 0.03 240); /* نص الكروت أزرق داكن */
-  --popover: oklch(0.995 0.02 220); /* خلفية popup زرقاء ناعمة */
-  --popover-foreground: oklch(0.15 0.03 235); /* نص popup أزرق داكن */
-  --primary: oklch(0.6 0.28 235); /* أزرق جميل وقوي للعناصر الأساسية */
-  --primary-foreground: oklch(0.98 0.01 220); /* نص أبيض على الأزرق */
-  --secondary: oklch(0.85 0.1 210); /* أزرق فاتح للعناصر الثانوية */
-  --secondary-foreground: oklch(0.2 0.04 240); /* نص أزرق داكن */
-  --muted: oklch(0.95 0.02 215); /* خلفيات مكتومة زرقاء فاتحة */
-  --muted-foreground: oklch(0.5 0.03 230); /* نص مكتوم أزرق متوسط */
-  --accent: oklch(0.7 0.25 245); /* لون تمييز أزرق لامع */
-  --accent-foreground: oklch(0.98 0.01 220); /* نص أبيض على التمييز */
-  --destructive: oklch(0.6 0.25 15); /* أحمر للأخطاء */
-  --destructive-foreground: oklch(0.98 0.01 15); /* نص أبيض على الأحمر */
-  --border: oklch(0.88 0.03 215); /* حدود زرقاء فاتحة */
-  --input: oklch(0.96 0.02 220); /* خلفية المدخلات زرقاء فاتحة */
-  --ring: oklch(0.6 0.28 235); /* حلقة التركيز زرقاء */
-  --chart-1: oklch(0.6 0.28 235); /* ألوان المخططات زرقاء متدرجة */
-  --chart-2: oklch(0.65 0.25 220);
-  --chart-3: oklch(0.7 0.22 250);
-  --chart-4: oklch(0.55 0.3 210);
-  --chart-5: oklch(0.75 0.2 240);
+  /* ألوان زرقاء جميلة بنظام HSL للتوافق */
+  --background: 220 50% 98%; /* خلفية بيضاء مع لمسة زرقاء */
+  --foreground: 235 15% 20%; /* نص أزرق داكن */
+  --card: 215 40% 97%; /* كروت بيضاء مع لمسة زرقاء */
+  --card-foreground: 240 20% 15%; /* نص الكروت أزرق داكن */
+  --popover: 220 50% 98%; /* خلفية popup زرقاء ناعمة */
+  --popover-foreground: 235 15% 20%; /* نص popup أزرق داكن */
+  --primary: 235 85% 50%; /* أزرق جميل وقوي */
+  --primary-foreground: 220 20% 98%; /* نص أبيض على الأزرق */
+  --secondary: 210 60% 85%; /* أزرق فاتح للعناصر الثانوية */
+  --secondary-foreground: 240 25% 25%; /* نص أزرق داكن */
+  --muted: 215 30% 95%; /* خلفيات مكتومة زرقاء فاتحة */
+  --muted-foreground: 230 10% 50%; /* نص مكتوم أزرق متوسط */
+  --accent: 245 80% 65%; /* لون تمييز أزرق لامع */
+  --accent-foreground: 220 20% 98%; /* نص أبيض على التمييز */
+  --destructive: 0 85% 60%; /* أحمر للأخطاء */
+  --destructive-foreground: 0 0% 98%; /* نص أبيض على الأحمر */
+  --border: 215 25% 88%; /* حدود زرقاء فاتحة */
+  --input: 220 40% 96%; /* خلفية المدخلات زرقاء فاتحة */
+  --ring: 235 85% 50%; /* حلقة التركيز زرقاء */
+  --chart-1: 235 85% 50%; /* ألوان المخططات زرقاء متدرجة */
+  --chart-2: 220 75% 55%;
+  --chart-3: 250 70% 60%;
+  --chart-4: 210 80% 45%;
+  --chart-5: 240 65% 65%;
   --radius: 0.8rem; /* زوايا مدورة أكثر أناقة */
-  --sidebar: oklch(0.96 0.02 218); /* شريط جانبي أزرق فاتح */
-  --sidebar-foreground: oklch(0.18 0.03 240); /* نص الشريط الجانبي */
-  --sidebar-primary: oklch(0.6 0.28 235); /* أزرق قوي للشريط الجانبي */
-  --sidebar-primary-foreground: oklch(0.98 0.01 220); /* نص أبيض */
-  --sidebar-accent: oklch(0.7 0.25 245); /* تمييز الشريط الجانبي */
-  --sidebar-accent-foreground: oklch(0.98 0.01 220); /* نص أبيض */
-  --sidebar-border: oklch(0.85 0.03 215); /* حدود الشريط الجانبي */
-  --sidebar-ring: oklch(0.6 0.28 235); /* حلقة تركيز الشريط الجانبي */
+  --sidebar: 218 35% 96%; /* شريط جانبي أزرق فاتح */
+  --sidebar-foreground: 240 20% 18%; /* نص الشريط الجانبي */
+  --sidebar-primary: 235 85% 50%; /* أزرق قوي للشريط الجانبي */
+  --sidebar-primary-foreground: 220 20% 98%; /* نص أبيض */
+  --sidebar-accent: 245 80% 65%; /* تمييز الشريط الجانبي */
+  --sidebar-accent-foreground: 220 20% 98%; /* نص أبيض */
+  --sidebar-border: 215 25% 85%; /* حدود الشريط الجانبي */
+  --sidebar-ring: 235 85% 50%; /* حلقة تركيز الشريط الجانبي */
 }
 
 .dark {
   /* المظهر المظلم بألوان زرقاء جميلة */
-  --background: oklch(0.08 0.03 235); /* خلفية مظلمة مع لمسة زرقاء */
-  --foreground: oklch(0.95 0.02 220); /* نص فاتح مع لمسة زرقاء */
-  --card: oklch(0.12 0.03 230); /* كروت مظلمة زرقاء */
-  --card-foreground: oklch(0.94 0.02 215); /* نص الكروت فاتح */
-  --popover: oklch(0.08 0.03 235); /* popup مظلم أزرق */
-  --popover-foreground: oklch(0.95 0.02 220); /* نص popup فاتح */
-  --primary: oklch(0.65 0.25 240); /* أزرق لامع للعناصر الأساسية */
-  --primary-foreground: oklch(0.08 0.03 235); /* نص مظلم على الأزرق */
-  --secondary: oklch(0.25 0.08 225); /* أزرق داكن للعناصر الثانوية */
-  --secondary-foreground: oklch(0.9 0.02 220); /* نص فاتح */
-  --muted: oklch(0.18 0.03 230); /* خلفيات مكتومة زرقاء */
-  --muted-foreground: oklch(0.65 0.02 225); /* نص مكتوم فاتح */
-  --accent: oklch(0.7 0.22 250); /* لون تمييز أزرق فاتح */
-  --accent-foreground: oklch(0.08 0.03 235); /* نص مظلم على التمييز */
-  --destructive: oklch(0.55 0.22 15); /* أحمر للأخطاء */
-  --destructive-foreground: oklch(0.95 0.02 15); /* نص فاتح على الأحمر */
-  --border: oklch(0.22 0.04 230); /* حدود زرقاء مظلمة */
-  --input: oklch(0.15 0.03 235); /* خلفية المدخلات مظلمة زرقاء */
-  --ring: oklch(0.65 0.25 240); /* حلقة التركيز زرقاء لامعة */
-  --chart-1: oklch(0.6 0.25 240); /* ألوان المخططات زرقاء متدرجة */
-  --chart-2: oklch(0.65 0.22 225);
-  --chart-3: oklch(0.7 0.2 255);
-  --chart-4: oklch(0.55 0.28 215);
-  --chart-5: oklch(0.75 0.18 245);
-  --sidebar: oklch(0.1 0.03 235); /* شريط جانبي مظلم أزرق */
-  --sidebar-foreground: oklch(0.94 0.02 220); /* نص الشريط الجانبي */
-  --sidebar-primary: oklch(0.65 0.25 240); /* أزرق لامع للشريط الجانبي */
-  --sidebar-primary-foreground: oklch(0.08 0.03 235); /* نص مظلم */
-  --sidebar-accent: oklch(0.7 0.22 250); /* تمييز الشريط الجانبي */
-  --sidebar-accent-foreground: oklch(0.08 0.03 235); /* نص مظلم */
-  --sidebar-border: oklch(0.25 0.04 230); /* حدود الشريط الجانبي */
-  --sidebar-ring: oklch(0.65 0.25 240); /* حلقة تركيز الشريط الجانبي */
+  --background: 235 50% 8%; /* خلفية مظلمة مع لمسة زرقاء */
+  --foreground: 220 30% 95%; /* نص فاتح مع لمسة زرقاء */
+  --card: 230 40% 12%; /* كروت مظلمة زرقاء */
+  --card-foreground: 215 25% 94%; /* نص الكروت فاتح */
+  --popover: 235 50% 8%; /* popup مظلم أزرق */
+  --popover-foreground: 220 30% 95%; /* نص popup فاتح */
+  --primary: 240 80% 65%; /* أزرق لامع للعناصر الأساسية */
+  --primary-foreground: 235 50% 8%; /* نص مظلم على الأزرق */
+  --secondary: 225 30% 25%; /* أزرق داكن للعناصر الثانوية */
+  --secondary-foreground: 220 25% 90%; /* نص فاتح */
+  --muted: 230 35% 18%; /* خلفيات مكتومة زرقاء */
+  --muted-foreground: 225 15% 65%; /* نص مكتوم فاتح */
+  --accent: 250 75% 70%; /* لون تمييز أزرق فاتح */
+  --accent-foreground: 235 50% 8%; /* نص مظلم على التمييز */
+  --destructive: 0 85% 55%; /* أحمر للأخطاء */
+  --destructive-foreground: 0 0% 95%; /* نص فاتح على الأحمر */
+  --border: 230 25% 22%; /* حدود زرقاء مظلمة */
+  --input: 235 40% 15%; /* خلفية المدخلات مظلمة زرقاء */
+  --ring: 240 80% 65%; /* حلقة التركيز زرقاء لامعة */
+  --chart-1: 240 80% 60%; /* ألوان المخططات زرقاء متدرجة */
+  --chart-2: 225 70% 65%;
+  --chart-3: 255 65% 70%;
+  --chart-4: 215 75% 55%;
+  --chart-5: 245 60% 75%;
+  --sidebar: 235 40% 10%; /* شريط جانبي مظلم أزرق */
+  --sidebar-foreground: 220 25% 94%; /* نص الشريط الجانبي */
+  --sidebar-primary: 240 80% 65%; /* أزرق لامع للشريط الجانبي */
+  --sidebar-primary-foreground: 235 50% 8%; /* نص مظلم */
+  --sidebar-accent: 250 75% 70%; /* تمييز الشريط الجانبي */
+  --sidebar-accent-foreground: 235 50% 8%; /* نص مظلم */
+  --sidebar-border: 230 25% 25%; /* حدود الشريط الجانبي */
+  --sidebar-ring: 240 80% 65%; /* حلقة تركيز الشريط الجانبي */
 }
 
 @theme inline {
@@ -121,144 +122,132 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
   }
   
   body {
     @apply bg-background text-foreground font-sans;
     background: linear-gradient(135deg, 
-      oklch(0.995 0.02 220) 0%, 
-      oklch(0.99 0.025 230) 25%,
-      oklch(0.995 0.015 215) 50%,
-      oklch(0.99 0.02 225) 75%,
-      oklch(0.995 0.02 220) 100%);
+      hsl(var(--background)) 0%, 
+      hsl(220, 60%, 97%) 50%,
+      hsl(var(--background)) 100%);
     min-height: 100vh;
   }
   
-  /* تحسين العناوين بألوان زرقاء متدرجة */
+  /* العناوين بألوان زرقاء جميلة */
   h1, h2, h3, h4, h5, h6 {
     @apply font-serif font-bold tracking-tight;
     background: linear-gradient(135deg, 
-      oklch(0.15 0.03 235) 0%, 
-      oklch(0.6 0.28 235) 50%, 
-      oklch(0.7 0.25 245) 100%);
+      hsl(var(--primary)) 0%, 
+      hsl(var(--accent)) 100%);
     background-clip: text;
     -webkit-background-clip: text;
     color: transparent;
-    text-shadow: 0 2px 8px oklch(0.6 0.28 235 / 0.15);
   }
   
-  /* تحسين الكروت بتأثيرات زرقاء */
-  [data-card], .card {
-    @apply backdrop-blur-sm border-border/60;
+  /* الكروت بتأثيرات جميلة */
+  .card {
+    @apply bg-card text-card-foreground border border-border rounded-lg shadow-lg;
     background: linear-gradient(135deg, 
-      oklch(0.98 0.015 215 / 0.9) 0%, 
-      oklch(0.99 0.02 220 / 0.8) 100%);
-    box-shadow: 
-      0 4px 16px oklch(0.6 0.28 235 / 0.08),
-      0 8px 32px oklch(0.6 0.28 235 / 0.04);
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 1px solid oklch(0.88 0.03 215 / 0.6);
+      hsl(var(--card)) 0%, 
+      hsl(220, 50%, 98%) 100%);
+    transition: all 0.3s ease;
   }
   
-  [data-card]:hover, .card:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 
-      0 8px 32px oklch(0.6 0.28 235 / 0.12),
-      0 16px 64px oklch(0.6 0.28 235 / 0.08);
-    border-color: oklch(0.6 0.28 235 / 0.3);
+  .card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px hsl(var(--primary) / 0.15);
   }
   
-  /* تحسين الأزرار بألوان زرقاء */
-  button, [role="button"] {
-    @apply transition-all duration-300 ease-out;
-    transform-origin: center;
+  /* الأزرار بألوان زرقاء */
+  .btn-primary, .primary {
+    @apply bg-primary text-primary-foreground;
     background: linear-gradient(135deg, 
-      oklch(0.6 0.28 235) 0%, 
-      oklch(0.7 0.25 245) 100%);
-    box-shadow: 0 4px 16px oklch(0.6 0.28 235 / 0.25);
+      hsl(var(--primary)) 0%, 
+      hsl(var(--accent)) 100%);
+    transition: all 0.2s ease;
   }
   
-  button:hover, [role="button"]:hover {
-    transform: translateY(-1px) scale(1.02);
-    box-shadow: 0 8px 24px oklch(0.6 0.28 235 / 0.35);
-    background: linear-gradient(135deg, 
-      oklch(0.65 0.3 240) 0%, 
-      oklch(0.75 0.27 250) 100%);
+  .btn-primary:hover, .primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 5px 15px hsl(var(--primary) / 0.3);
   }
   
-  button:active, [role="button"]:active {
-    transform: translateY(0) scale(0.98);
-  }
-  
-  /* تحسين المدخلات بتأثيرات زرقاء */
+  /* المدخلات */
   input, textarea, select {
-    @apply transition-all duration-300 ease-out backdrop-blur-sm;
-    background: linear-gradient(135deg, 
-      oklch(0.96 0.02 220 / 0.8) 0%, 
-      oklch(0.97 0.015 215 / 0.9) 100%);
-    border: 1px solid oklch(0.88 0.03 215 / 0.5);
+    @apply bg-input border-border text-foreground;
+    transition: all 0.2s ease;
   }
   
   input:focus, textarea:focus, select:focus {
-    transform: scale(1.01);
-    background: linear-gradient(135deg, 
-      oklch(0.97 0.02 220) 0%, 
-      oklch(0.98 0.015 215) 100%);
-    box-shadow: 
-      0 0 0 3px oklch(0.6 0.28 235 / 0.2), 
-      0 8px 24px oklch(0.6 0.28 235 / 0.15);
-    border-color: oklch(0.6 0.28 235 / 0.5);
+    @apply ring-2 ring-ring border-primary;
+    box-shadow: 0 0 0 2px hsl(var(--ring) / 0.2);
   }
   
-  /* تحسين الحدود */
-  hr, .divider {
-    background: linear-gradient(90deg, 
-      transparent 0%, 
-      oklch(0.6 0.28 235 / 0.3) 25%,
-      oklch(0.7 0.25 245 / 0.5) 50%,
-      oklch(0.6 0.28 235 / 0.3) 75%,
-      transparent 100%);
-    height: 2px;
-    border: none;
-    border-radius: 1px;
+  /* النصوص */
+  .text-primary {
+    color: hsl(var(--primary));
+  }
+  
+  .text-accent {
+    color: hsl(var(--accent));
+  }
+  
+  /* الخلفيات */
+  .bg-primary {
+    background-color: hsl(var(--primary));
+  }
+  
+  .bg-accent {
+    background-color: hsl(var(--accent));
   }
   
   /* تأثيرات للمظهر المظلم */
   .dark body {
     background: linear-gradient(135deg, 
-      oklch(0.08 0.03 235) 0%, 
-      oklch(0.06 0.035 240) 25%,
-      oklch(0.09 0.025 230) 50%,
-      oklch(0.07 0.03 245) 75%,
-      oklch(0.08 0.03 235) 100%);
+      hsl(var(--background)) 0%, 
+      hsl(235, 60%, 6%) 50%,
+      hsl(var(--background)) 100%);
   }
   
-  .dark [data-card], .dark .card {
-    @apply backdrop-blur-md;
+  .dark .card {
     background: linear-gradient(135deg, 
-      oklch(0.12 0.03 230 / 0.8) 0%, 
-      oklch(0.1 0.035 235 / 0.9) 100%);
-    box-shadow: 
-      0 4px 16px oklch(0.05 0.04 240 / 0.3),
-      0 8px 32px oklch(0.05 0.04 240 / 0.2);
-    border: 1px solid oklch(0.22 0.04 230 / 0.4);
+      hsl(var(--card)) 0%, 
+      hsl(230, 50%, 10%) 100%);
   }
-  
-  .dark [data-card]:hover, .dark .card:hover {
-    box-shadow: 
-      0 8px 32px oklch(0.05 0.04 240 / 0.4),
-      0 16px 64px oklch(0.05 0.04 240 / 0.3);
-    border-color: oklch(0.65 0.25 240 / 0.4);
-  }
-  
-  .dark h1, .dark h2, .dark h3, .dark h4, .dark h5, .dark h6 {
-    background: linear-gradient(135deg, 
-      oklch(0.95 0.02 220) 0%, 
-      oklch(0.65 0.25 240) 50%, 
-      oklch(0.7 0.22 250) 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    color: transparent;
-  }
+}
+
+/* فئات مساعدة للألوان الزرقاء */
+.blue-gradient {
+  background: linear-gradient(135deg, #3B82F6, #1D4ED8);
+}
+
+.blue-text {
+  color: #2563EB;
+}
+
+.blue-bg {
+  background-color: #3B82F6;
+}
+
+.blue-border {
+  border-color: #60A5FA;
+}
+
+.blue-shadow {
+  box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+}
+
+/* تأكد من ظهور الألوان */
+.force-blue {
+  background: #3B82F6 !important;
+  color: white !important;
+}
+
+.test-blue {
+  background: linear-gradient(45deg, #1E40AF, #3B82F6, #60A5FA) !important;
+  color: white !important;
+  padding: 1rem !important;
+  margin: 1rem !important;
+  border-radius: 0.5rem !important;
 }
